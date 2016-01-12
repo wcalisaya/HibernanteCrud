@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 12/01/2016, 05:36:31 PM
+    Document   : create
+    Created on : 12/01/2016, 05:42:58 PM
     Author     : william.calisaya
 --%>
 
@@ -12,7 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <a href="controller_guille">Crear</a>
+        <h1>Me quiere crearr..!!</h1>
     </body>
 </html>
