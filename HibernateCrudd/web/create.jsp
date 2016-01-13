@@ -13,5 +13,10 @@
     </head>
     <body>
         <h1>Me quiere crearr..!!</h1>
+        <form action="controller_guille" method="POST">
+            <input type="text" name="nombre" placeholder="nombre">
+            <input type="text" name="cargo" placeholder="cargo">
+            <input type="submit" value="Registrar">
+        </form>
     </body>
 </html>

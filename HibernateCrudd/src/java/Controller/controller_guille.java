@@ -5,8 +5,10 @@
  */
 package Controller;
 
+import Ejb.EjbTGuille;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "controller_guille", urlPatterns = {"/controller_guille"})
 public class controller_guille extends HttpServlet {
 
+    @EJB
+    private EjbTGuille ejbTGuille;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,7 +38,20 @@ public class controller_guille extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         if(request.getMethod().equals("GET")){
-            response.sendRedirect("create.jsp");
+            //response.sendRedirect("create.jsp");
+            request.getRequestDispatcher("create.jsp").forward(request, response);
+        }
+        
+        if(request.getMethod().equals("POST"))
+        {
+            ejbTGuille = new EjbTGuille();
+
+            ejbTGuille.getGuille().setNombre(request.getParameter("nombre"));
+            ejbTGuille.getGuille().setCargo(request.getParameter("cargo"));
+
+            boolean retorno = ejbTGuille.insert();
+            request.setAttribute("resultado", retorno ? "ok" : "fail");
+            request.getRequestDispatcher("resultado.jsp").forward(request, response);
         }
     }
 
